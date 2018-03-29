@@ -1,0 +1,61 @@
+﻿@model CadastroEmpresaCNPJReceita.Models.EmpresaPesquisaViewModel
+@using CadastroEmpresaCNPJReceita.Models
+
+@{
+    ViewBag.Title = "Index";
+    var modeloColunas = new Empresa();
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => modeloColunas.CNPJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => modeloColunas.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => modeloColunas.Abertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => modeloColunas.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => modeloColunas.NomeFantasia)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Resultados)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abertura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeFantasia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmpresaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EmpresaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmpresaId })
+            </td>
+        </tr>
+    }
+
+</table>

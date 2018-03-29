@@ -1,0 +1,55 @@
+﻿@model CadastroEmpresaCNPJReceita.Models.EmpresaPesquisaViewModel
+@using CadastroEmpresaCNPJReceita.Models
+
+@{
+    ViewBag.Title = "Criar";
+    var modeloColunas = new Empresa();
+}
+
+<h2>Create</h2>
+
+@Html.Partial("_Pesquisa", Model)
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(_ => modeloColunas.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(_ => modeloColunas.NomeFantasia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(_ => modeloColunas.CNPJ)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Resultados)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeFantasia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.EmpresaId }) |
+                @Html.ActionLink("Detailhes", "Details", new { id = item.EmpresaId }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.EmpresaId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Voltar para a lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
